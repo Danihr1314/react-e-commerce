@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Button, Card, Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import ProductSlides from '../components/ProductSlides';
 import { getProductsThunk } from '../store/slices/products.slice';
 
 const ProductsDetail = () => {
@@ -12,7 +13,7 @@ const ProductsDetail = () => {
   const productsListed = useSelector(state => state.products);
   const product = productsListed.find((productId) => productId.id === Number(id))
 
-  //console.log(product?.category.id)
+  //console.log(product)
 
   const similarProducts = productsListed.filter((prodId) =>
     prodId.category.id === product.category?.id
@@ -25,11 +26,17 @@ const ProductsDetail = () => {
   return (
     <div>
       <Row lg>
-        <Col lg={6}><img style={{width: 576, heigth: 576}} src={product?.productImgs[0]} alt="" /></Col>
+        <Col lg={6}>
+          <div className='carousel'>
+            <ProductSlides
+              images={product}
+            />
+          </div></Col>
         <Col lg={6}>
           <h3>{product?.title}</h3>
           <p>{product?.description}</p>
           <p><span>Price </span><br></br>{product?.price}</p>
+          <Button style={{ borderRadius: "10px" }} variant="dark">Buy</Button>
         </Col>
       </Row>
       <h1>Related products</h1>
@@ -42,14 +49,14 @@ const ProductsDetail = () => {
                 height: 400
               }}
             >
-              <Link to={`/product/${[product.id]}`} style={{ textDecoration: "none" }}>
+              <Link to={`/product/${[newProduct.id]}`} style={{ textDecoration: "none" }}>
                 <div className='card-image'>
                   <Card.Img
                     variant="top"
                     src={newProduct.productImgs[0]}
                     style={{
-                      width: 300,
-                      height: 200
+                      width: "80%",
+                      height: "auto"
                     }}
                   />
                 </div>

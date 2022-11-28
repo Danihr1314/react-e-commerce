@@ -67,22 +67,24 @@ const Home = () => {
                 <Card
                   style={{
                     width: 300,
-                    height:400
+                    height: 400
                   }}>
                   <Link to={`/product/${[product.id]}`} style={{ textDecoration: "none" }}>
                     <div className='card-image'>
                       <Card.Img
+                        className="d-block mw-100 mh-100"
                         variant="top"
                         src={product.productImgs[0]}
                         style={{
-                          width: 300,
-                          height: 200
+                          width: "80%",
+                          height: "auto",
+                          objectFit: "contain"
                         }}
                       />
                     </div>
                     <Card.Body>
                       <Card.Title>{product.title}</Card.Title>
-                      <Card.Text>
+                      <Card.Text style={{ color: "rgba(100, 100, 100)" }}>
                         <span>Price</span><br></br>$ {product.price}
                       </Card.Text>
                     </Card.Body>
