@@ -24,6 +24,9 @@ const ProductsDetail = () => {
   }, [])
 
   return (
+
+    /* --------------------------------------------Slide & Descripción ----------------------------------------------- */
+
     <div>
       <Row lg>
         <Col lg={6}>
@@ -39,6 +42,9 @@ const ProductsDetail = () => {
           <Button style={{ borderRadius: "10px" }} variant="dark">Buy</Button>
         </Col>
       </Row>
+
+      {/* --------------------------------------------- Productos relacionados ------------------------------------------------------------------------------ */}
+
       <h1>Related products</h1>
       <Row xs={1} md={2} lg={3} className="g-5">
         {similarProducts.map(newProduct => (
@@ -55,8 +61,10 @@ const ProductsDetail = () => {
                     variant="top"
                     src={newProduct.productImgs[0]}
                     style={{
-                      width: "80%",
-                      height: "auto"
+                      width: "175px",
+                      height: "175px",
+                      objectFit: "contain",
+                      position: "relative"
                     }}
                   />
                 </div>

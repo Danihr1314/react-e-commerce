@@ -29,6 +29,9 @@ const Home = () => {
   return (
     <div>
       <Row>
+
+        {/*-------------------------------------------------------- Lista categorias ----------------------------------------------------------*/}
+
         <Col lg={3}>
           <ListGroup>
             {categoryList.map((category) => (
@@ -42,6 +45,9 @@ const Home = () => {
             ))}
           </ListGroup>
         </Col>
+
+        {/*--------------------------------------------------------- Productos & Search --------------------------------------------------------------*/}
+
         <Col lg={9}>
           <h1>Products</h1>
           <InputGroup className="mb-3">
@@ -65,6 +71,7 @@ const Home = () => {
                 key={product.id}
               >
                 <Card
+                  className='card'
                   style={{
                     width: 300,
                     height: 400
@@ -76,9 +83,10 @@ const Home = () => {
                         variant="top"
                         src={product.productImgs[0]}
                         style={{
-                          width: "80%",
-                          height: "auto",
-                          objectFit: "contain"
+                          width: "175px",
+                          height: "175px",
+                          objectFit: "contain",
+                          position: "relative"
                         }}
                       />
                     </div>

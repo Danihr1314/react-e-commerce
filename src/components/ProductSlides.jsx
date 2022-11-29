@@ -5,17 +5,17 @@ const ProductSlides = ({ images }) => {
   return (
     <div>
       <Carousel>
-        <Carousel.Item
-          style={{
-            maxWidth: "90%",
-            maxHeight: "10%",
-            objectFit: "contain"
-          }}
-        >
+        <Carousel.Item>
           <img
             className="d-block mw-100 mh-100"
             src={images?.productImgs[0]}
             alt="First slide"
+            style={{
+              width: "400px",
+              height: "400px",
+              objectFit: "contain",
+              position: "relative"
+            }}
           />
         </Carousel.Item>
         <Carousel.Item>
@@ -23,6 +23,12 @@ const ProductSlides = ({ images }) => {
             className="d-block mw-100 mh-100"
             src={images?.productImgs[1]}
             alt="Second slide"
+            style={{
+              width: "400px",
+              height: "400px",
+              objectFit: "contain",
+              position: "relative"
+            }}
           />
         </Carousel.Item>
         <Carousel.Item>
@@ -30,6 +36,12 @@ const ProductSlides = ({ images }) => {
             className="d-block mw-100 mh-100"
             src={images?.productImgs[2]}
             alt="Third slide"
+            style={{
+              width: "400px",
+              height: "400px",
+              objectFit: "contain",
+              position: "relative"
+            }}
           />
         </Carousel.Item>
       </Carousel>
