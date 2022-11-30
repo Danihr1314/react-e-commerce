@@ -3,15 +3,17 @@ import { Offcanvas } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCartThunk } from '../store/slices/cart.slice';
 
-const CartSideBar = ({show, handleClose}) => {
+const CartSideBar = ({ show, handleClose }) => {
 
   const dispatch = useDispatch();
 
-  useEffect(()=> {
+  useEffect(() => {
     dispatch(getCartThunk())
-  },[]); 
+  }, []);
 
-  const cart = useSelector((state)=> state.cart);
+  const cart = useSelector((state) => state.cart);
+
+  console.log(cart)
 
   return (
     <div>
@@ -21,7 +23,15 @@ const CartSideBar = ({show, handleClose}) => {
         </Offcanvas.Header>
         <Offcanvas.Body>
           {cart.map(product => (
-            <div key={product.id}>{product.title}</div>
+            <div
+              style={{
+                disaplay: "flex",
+                marginBottom: "3rem"
+              }}
+              key={product.id}>
+              <p><b>{product.title}</b></p>
+              <p>{product.productsInCart.quantity}</p>
+            </div>
           ))}
         </Offcanvas.Body>
       </Offcanvas>
