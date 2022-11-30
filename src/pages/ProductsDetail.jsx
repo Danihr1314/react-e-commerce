@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
@@ -23,6 +23,15 @@ const ProductsDetail = () => {
     dispatch(getProductsThunk())
   }, [])
 
+  const [quantity, setQuantity] = useState('');
+
+  const addToCart = () => {
+    const products = {
+      id: product.id,
+      quantity: quantity
+    }
+  }
+
   return (
 
     /* --------------------------------------------Slide & Descripción ----------------------------------------------- */
@@ -39,7 +48,15 @@ const ProductsDetail = () => {
           <h3>{product?.title}</h3>
           <p>{product?.description}</p>
           <p><span>Price </span><br></br>{product?.price}</p>
-          <Button style={{ borderRadius: "10px" }} variant="dark">Buy</Button>
+          <input
+            value={quantity}
+            type="text"
+            onChange={(e) => setQuantity(e.target.value)}
+          />
+          <Button
+            onClick={addToCart}
+            style={{ borderRadius: "10px" }}
+            variant="dark">Buy</Button>
         </Col>
       </Row>
 
