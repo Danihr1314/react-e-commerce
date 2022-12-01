@@ -3,6 +3,7 @@ import { Button, Card, Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import ProductSlides from '../components/ProductSlides';
+import { getPurchasesThunk } from '../store/slices/cart.slice';
 import { getProductsThunk } from '../store/slices/products.slice';
 
 const ProductsDetail = () => {
@@ -30,6 +31,7 @@ const ProductsDetail = () => {
       id: product.id,
       quantity: quantity
     }
+    dispatch(getPurchasesThunk(products))
   }
 
   return (

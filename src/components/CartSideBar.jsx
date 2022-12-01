@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { Offcanvas } from 'react-bootstrap';
+import { Button, Offcanvas } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCartThunk } from '../store/slices/cart.slice';
+import { checkoutCartThunk, getCartThunk } from '../store/slices/cart.slice';
 
 const CartSideBar = ({ show, handleClose }) => {
 
@@ -26,13 +26,18 @@ const CartSideBar = ({ show, handleClose }) => {
             <div
               style={{
                 disaplay: "flex",
-                marginBottom: "3rem"
+                marginBottom: "3rem",
+                border: '1px solid gray',
+                padding: '10px',
+                borderRadius: '5px'
               }}
               key={product.id}>
               <p><b>{product.title}</b></p>
-              <p>{product.productsInCart.quantity}</p>
+              <p><b>Quantity: </b>{product.productsInCart.quantity}</p>
+              <p><b>Total: </b>${product.price * product.productsInCart.quantity}</p>
             </div>
           ))}
+          <Button onClick={()=> dispatch(checkoutCartThunk())}>Checkout</Button>
         </Offcanvas.Body>
       </Offcanvas>
     </div>
